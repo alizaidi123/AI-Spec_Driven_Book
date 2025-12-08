@@ -1,0 +1,106 @@
+# Manipulation and Hand Control
+
+Manipulation is a critical capability for humanoid robots, enabling them to interact with objects and perform tasks. This chapter covers kinematics, grasping, and manipulation techniques.
+
+## Kinematics and Inverse Kinematics for Arms
+
+Understanding arm movement and positioning:
+
+- **Forward kinematics**: Calculating end-effector position from joint angles
+- **Inverse kinematics**: Finding joint angles for desired end-effector position
+- **Jacobian matrix**: Relating joint velocities to end-effector velocities
+- **Redundancy resolution**: Handling extra degrees of freedom in arm design
+
+```python
+# Example inverse kinematics solver
+import numpy as np
+
+class ArmIKSolver:
+    def __init__(self, link_lengths):
+        self.l1, self.l2 = link_lengths
+
+    def solve_2d_ik(self, x, y):
+        # Simple 2D inverse kinematics for 2-link arm
+        r = np.sqrt(x**2 + y**2)
+        cos_theta2 = (r**2 - self.l1**2 - self.l2**2) / (2 * self.l1 * self.l2)
+        theta2 = np.arccos(np.clip(cos_theta2, -1, 1))
+
+        k1 = self.l1 + self.l2 * np.cos(theta2)
+        k2 = self.l2 * np.sin(theta2)
+
+        theta1 = np.arctan2(y, x) - np.arctan2(k2, k1)
+
+        return theta1, theta2
+```
+
+## Grasp Planning and Execution
+
+Planning and executing stable grasps:
+
+- **Grasp synthesis**: Determining where and how to grasp objects
+- **Force closure**: Ensuring grasp stability under external forces
+- **Grasp quality metrics**: Evaluating grasp robustness
+- **Multi-finger coordination**: Coordinating multiple fingers for complex grasps
+
+## Force Control in Manipulation Tasks
+
+Controlling forces during manipulation:
+
+- **Impedance control**: Controlling the robot's mechanical impedance
+- **Admittance control**: Controlling motion in response to applied forces
+- **Hybrid force/position control**: Combining position and force control
+- **Compliance**: Allowing controlled flexibility in manipulation
+
+## Multi-Fingered Hand Control
+
+Controlling complex hands with multiple fingers:
+
+- **Underactuated hands**: Fewer actuators than degrees of freedom
+- **Synergies**: Coordinated finger movements for grasp types
+- **Tactile feedback**: Using touch sensors for grasp adjustment
+- **Grasp primitives**: Basic grasp types for different object shapes
+
+## Object Manipulation and Tool Use
+
+Advanced manipulation capabilities:
+
+- **Object recognition**: Identifying objects for appropriate manipulation
+- **Dynamic manipulation**: Manipulating objects in motion
+- **Tool use**: Using tools to extend manipulation capabilities
+- **Bimanual manipulation**: Using both arms for complex tasks
+
+## ROS/ROS2 Manipulation Frameworks
+
+Using ROS/ROS2 for manipulation:
+
+- **MoveIt!**: Motion planning and inverse kinematics
+- **Grasp generation**: Automatic grasp planning algorithms
+- **End-effector control**: Standard interfaces for grippers/hands
+- **Simulation**: Testing manipulation in Gazebo or other simulators
+
+## Safety in Manipulation
+
+Safety considerations for manipulation tasks:
+
+- **Force limits**: Preventing excessive forces on objects or humans
+- **Collision avoidance**: Preventing unintended contact during motion
+- **Emergency stops**: Rapid halt of manipulation when needed
+- **Workspace monitoring**: Ensuring safe operation zones
+
+## Chapter Project: Implementing Arm Manipulation Task
+
+In this project, you'll implement an arm manipulation task in simulation:
+
+1. Set up a robotic arm with appropriate kinematics
+2. Implement inverse kinematics solver for the arm
+3. Create a grasp planning system
+4. Execute a pick-and-place task
+5. Test force control during manipulation
+
+## Review Questions
+
+1. What is the difference between forward and inverse kinematics?
+2. How does impedance control work in manipulation tasks?
+3. What are grasp quality metrics and why are they important?
+4. How does MoveIt! facilitate robotic manipulation?
+5. What safety considerations are important in manipulation tasks?

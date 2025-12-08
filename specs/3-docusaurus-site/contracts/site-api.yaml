@@ -1,0 +1,78 @@
+# Site API Contract for Physical AI & Humanoid Robotics Book
+
+# This is a conceptual contract describing the site's navigation and content structure
+# Since this is a static site, there are no actual API endpoints, but we define
+# the expected structure and navigation patterns
+
+paths:
+  /:
+    get:
+      summary: "Homepage with book overview and chapter grid"
+      responses:
+        "200":
+          description: "Homepage displaying book title, tagline, and 10 chapter tiles"
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                    example: "Physical AI & Humanoid Robotics"
+                  tagline:
+                    type: string
+                    example: "A comprehensive guide to embodied artificial intelligence"
+                  chapters:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        number:
+                          type: integer
+                          example: 1
+                        title:
+                          type: string
+                          example: "Introduction to Physical AI and Humanoid Robotics"
+                        summary:
+                          type: string
+                          example: "Historical context and core concepts of physical AI"
+                        link:
+                          type: string
+                          example: "/docs/01-introduction"
+
+  /docs/{chapterId}:
+    get:
+      summary: "Individual chapter page"
+      parameters:
+        - name: chapterId
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: "^[0-9]{2}-[a-z-]+$"
+            example: "01-introduction"
+      responses:
+        "200":
+          description: "Chapter page with content and navigation"
+          content:
+            text/html:
+              schema:
+                type: object
+                properties:
+                  chapterNumber:
+                    type: integer
+                    example: 1
+                  title:
+                    type: string
+                    example: "Introduction to Physical AI and Humanoid Robotics"
+                  content:
+                    type: string
+                    description: "MDX content with text and code blocks only"
+                  previousChapter:
+                    type: string
+                    nullable: true
+                    example: "/docs/01-introduction"
+                  nextChapter:
+                    type: string
+                    nullable: true
+                    example: "/docs/02-embodiment"

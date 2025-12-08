@@ -1,55 +1,41 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- SYNC IMPACT REPORT:
+Version change: N/A (initial) → 1.0.0
+Modified principles: N/A
+Added sections: All principles and sections (initial constitution)
+Removed sections: None
+Templates requiring updates: N/A
+Follow-up TODOs: None
+-->
+
+# Physical AI & Humanoid Robotics Book Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Technical Accuracy and Practical Implementation
+All content must be technically accurate, verified through implementation or simulation, and represent current best practices in humanoid robotics and physical AI. Code examples must be coherent, self-contained, and tested for correctness. Theoretical concepts must be grounded in practical applications that readers can implement themselves.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Progressive Learning Structure
+Content must follow a logical progression from foundational concepts to advanced implementations, with each chapter building upon previous material. Mathematical concepts should be introduced as needed rather than upfront, and all examples must be accessible to senior CS/EE students with Python knowledge. Cross-references between chapters must be explicit and helpful.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Implementation-First Approach
+Every concept must be demonstrated through concrete, runnable code examples that readers can execute and modify. Code must be well-documented, follow Python best practices, and include error handling where appropriate. Simulation environments and real hardware considerations must be clearly distinguished, with safety guidelines emphasized for physical implementations.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Hardware-Agnostic Design Patterns
+Examples and architectures should emphasize reusable design patterns that work across different humanoid platforms. When platform-specific code is necessary, it must be clearly isolated and alternatives documented. The focus should be on transferable skills and concepts rather than vendor-specific implementations.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Safety and Ethical Considerations
+All physical AI and humanoid implementations must include explicit safety considerations and ethical implications. Code examples must include safety checks, bounds validation, and emergency stop mechanisms where applicable. Discussion of societal impact and responsible AI development must be integrated throughout rather than isolated to a single chapter.
 
-### [PRINCIPLE_6_NAME]
+### VI. Reproducible Research and Documentation
+All experiments, simulations, and results presented in the book must be reproducible with provided code and configurations. Dependencies must be clearly specified, version-controlled, and installation procedures documented. Figures, tables, and experimental results must include sufficient detail for readers to reproduce them independently.
 
+## Content Standards and Constraints
+All content must target senior CS/EE students and practitioners familiar with Python and basic robotics concepts. Mathematical notation must be consistent throughout the book, with symbols defined locally when first used and in a comprehensive glossary. All code examples must be licensed appropriately for educational use and avoid proprietary algorithms or trade secrets.
 
-[PRINCIPLE__DESCRIPTION]
-
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Development and Review Process
+All chapters must undergo technical review by subject matter experts in robotics and AI. Code examples must be tested in simulation environments before publication. Each chapter must include exercises and practical projects that reinforce the concepts taught. Peer review must verify both technical accuracy and pedagogical effectiveness.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+This constitution governs all aspects of the Physical AI & Humanoid Robotics book development. All contributions must comply with these principles. Amendments require documentation of rationale and approval by the editorial board. All pull requests must verify compliance with these principles before merging.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-08 | **Last Amended**: 2025-12-08

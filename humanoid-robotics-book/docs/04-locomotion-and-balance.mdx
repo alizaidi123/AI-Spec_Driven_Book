@@ -1,0 +1,103 @@
+# Locomotion and Balance Control
+
+Locomotion and balance are fundamental capabilities for humanoid robots. This chapter explores the principles of bipedal locomotion, balance control, and gait generation techniques.
+
+## Bipedal Locomotion Principles
+
+Bipedal locomotion presents unique challenges compared to wheeled or tracked systems:
+
+- **Dynamic balance**: Maintaining balance while moving requires continuous control
+- **Zero-moment point (ZMP)**: Critical concept for stable walking
+- **Double support phase**: When both feet contact the ground
+- **Single support phase**: When only one foot contacts the ground
+
+## Balance and Stability Control
+
+Maintaining balance requires sophisticated control strategies:
+
+```python
+# Example balance controller using inverted pendulum model
+class BalanceController:
+    def __init__(self):
+        self.com_height = 0.8  # Center of mass height
+        self.gravity = 9.81
+
+    def compute_balance_correction(self, com_position, zmp_position):
+        # Simple inverted pendulum model
+        omega = (self.gravity / self.com_height) ** 0.5
+        # Calculate desired ZMP to maintain balance
+        desired_zmp = com_position - (com_velocity / (omega ** 2))
+        return desired_zmp
+```
+
+## Gait Pattern Generation and Adaptation
+
+Creating stable walking patterns:
+
+- **Predefined gaits**: Stored walking patterns for different speeds
+- **Online gait generation**: Real-time pattern creation based on terrain
+- **Footstep planning**: Determining where to place feet
+- **Phase synchronization**: Coordinating different body parts
+
+## Terrain Adaptation and Obstacle Navigation
+
+Adapting to different surfaces and obstacles:
+
+- **Step height adjustment**: Modifying gait for stairs or curbs
+- **Surface compliance**: Adjusting for soft or uneven surfaces
+- **Obstacle detection**: Using sensors to identify obstacles
+- **Path planning**: Finding safe routes around obstacles
+
+## Walking, Running, and Climbing Strategies
+
+Different locomotion modes for various scenarios:
+
+- **Walking**: Stable, energy-efficient movement
+- **Running**: Faster movement with flight phases
+- **Climbing**: Ascending stairs, ramps, or other structures
+- **Recovery**: Getting back up after falls
+
+## ROS/ROS2 Locomotion Frameworks
+
+Using ROS/ROS2 for locomotion control:
+
+- **Navigation stack**: Path planning and obstacle avoidance
+- **Control frameworks**: ros_control for joint control
+- **Simulation environments**: Gazebo for testing locomotion
+- **Hardware abstraction**: Standard interfaces for different robots
+
+## Stability Metrics and Evaluation
+
+Quantifying balance and locomotion performance:
+
+- **Capture point**: Predicts where robot will fall without recovery
+- **Angular momentum**: Measure of overall system stability
+- **Energy efficiency**: Power consumption during locomotion
+- **Step success rate**: Percentage of successful steps
+
+## Safety Considerations for Locomotion
+
+Safety in movement and balance:
+
+- **Fall prevention**: Early detection of instability
+- **Controlled falls**: Minimizing damage when falls occur
+- **Speed limits**: Restricting movement speeds for safety
+- **Emergency stops**: Rapid halt of locomotion when needed
+
+## Chapter Project: Implementing Basic Walking Pattern
+
+In this project, you'll implement a basic walking pattern for a simulated humanoid:
+
+1. Set up a humanoid model in simulation with appropriate sensors
+2. Implement ZMP-based balance control
+3. Create a simple gait pattern generator
+4. Test the walking pattern on flat terrain
+5. Evaluate stability metrics and adjust parameters
+
+## Review Questions
+
+1. What is the zero-moment point (ZMP) and why is it important for walking?
+2. How do double support and single support phases differ in bipedal walking?
+3. What are the main challenges in bipedal locomotion compared to wheeled robots?
+4. How does terrain adaptation work in humanoid locomotion?
+5. What safety measures are important for locomotion control?

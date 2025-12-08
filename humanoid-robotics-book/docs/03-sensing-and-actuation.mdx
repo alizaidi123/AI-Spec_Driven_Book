@@ -1,0 +1,106 @@
+# Sensing and Actuation Systems
+
+Sensors and actuators form the interface between a humanoid robot and its environment. This chapter explores the various types of sensors and actuators used in humanoid robotics and how they enable perception and action.
+
+## Types of Sensors in Humanoid Robots
+
+Humanoid robots require multiple sensor types for comprehensive environmental awareness:
+
+- **Inertial Measurement Units (IMUs)**: Measure acceleration and angular velocity
+- **Cameras**: Provide visual information for object recognition and navigation
+- **Force/Torque sensors**: Detect contact forces and moments
+- **Joint encoders**: Measure joint positions and velocities
+- **Tactile sensors**: Detect touch and pressure on the robot's surface
+
+## Actuator Technologies
+
+Actuators provide the mechanical power for robot movement:
+
+- **Servo motors**: Precise position and velocity control
+- **Hydraulic actuators**: High power-to-weight ratio for heavy lifting
+- **Pneumatic actuators**: Compliant and lightweight for safe interaction
+- **Electric motors**: Most common due to precision and controllability
+
+## Sensor Fusion Techniques
+
+Combining multiple sensor inputs for better environmental understanding:
+
+```python
+# Example sensor fusion using Kalman filtering
+import numpy as np
+
+class SensorFusion:
+    def __init__(self):
+        self.state = np.zeros(6)  # position and velocity
+        self.covariance = np.eye(6)
+
+    def fuse_sensors(self, imu_data, camera_data, encoder_data):
+        # Predict step using IMU
+        self.predict(imu_data)
+        # Update step using camera and encoder data
+        self.update(camera_data, encoder_data)
+        return self.state
+```
+
+## Calibration and Accuracy Considerations
+
+Sensor calibration ensures accurate measurements:
+
+- **Intrinsic calibration**: Internal sensor parameters (e.g., camera focal length)
+- **Extrinsic calibration**: Position and orientation relative to robot frame
+- **Temporal synchronization**: Aligning sensor data in time
+- **Drift compensation**: Correcting for sensor drift over time
+
+## Integration with Control Systems
+
+Sensors and actuators must work seamlessly with control systems:
+
+- **Real-time constraints**: Processing sensor data within control loops
+- **Communication protocols**: ROS messages, CAN bus, EtherCAT
+- **Safety interlocks**: Emergency stops based on sensor data
+- **Feedback control**: Using sensor data for closed-loop control
+
+## ROS/ROS2 Sensor Integration
+
+Using ROS/ROS2 for sensor management:
+
+- **Sensor drivers**: Standardized interfaces for different sensor types
+- **Message types**: sensor_msgs package for common sensor data
+- **Transforms**: tf2 for coordinate system management
+- **Synchronization**: Time-based and message-based synchronization
+
+## Actuator Control Strategies
+
+Controlling actuators for desired robot behavior:
+
+- **Position control**: Moving to specific joint angles
+- **Velocity control**: Achieving specific joint velocities
+- **Torque control**: Applying specific forces/torques
+- **Impedance control**: Controlling the robot's mechanical impedance
+
+## Safety Considerations for Sensors and Actuators
+
+Safety in sensing and actuation:
+
+- **Sensor failure detection**: Identifying faulty sensors
+- **Actuator limits**: Preventing excessive forces or velocities
+- **Emergency stops**: Rapid actuator shutdown when needed
+- **Redundant sensing**: Multiple sensors for critical functions
+
+## Chapter Project: Implementing Sensor Data Acquisition
+
+In this project, you'll implement sensor data acquisition and visualization:
+
+1. Set up ROS/ROS2 nodes for different sensor types
+2. Implement sensor data publishing and subscription
+3. Create a visualization tool for sensor data
+4. Test sensor fusion algorithms
+5. Validate the accuracy and timing of sensor data
+
+## Review Questions
+
+1. What are the main types of sensors used in humanoid robots?
+2. How do different actuator technologies compare?
+3. What is sensor fusion and why is it important?
+4. What are the key considerations for sensor calibration?
+5. How do ROS/ROS2 facilitate sensor integration?

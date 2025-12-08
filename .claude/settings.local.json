@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "SlashCommand(/sp.specify)",
+      "Bash(.specify/scripts/powershell/setup-plan.ps1 -Json)",
+      "SlashCommand(/sp.tasks)",
+      "SlashCommand(/sp.implement)",
+      "Bash(.specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,117 @@
+# Control Architectures for Humanoid Robots
+
+Control systems are the brain of humanoid robots, coordinating perception, planning, and action. This chapter explores various control architectures and strategies for humanoid robots.
+
+## Classical Control Approaches
+
+Traditional control methods form the foundation of humanoid control:
+
+- **PID control**: Proportional-Integral-Derivative controllers for basic regulation
+- **Feedback control**: Using sensor data to correct deviations from desired behavior
+- **Feedforward control**: Anticipating system behavior to improve response
+- **Cascade control**: Multiple control loops working together
+
+```python
+# Example PID controller for joint control
+class PIDController:
+    def __init__(self, kp, ki, kd, dt):
+        self.kp = kp  # Proportional gain
+        self.ki = ki  # Integral gain
+        self.kd = kd  # Derivative gain
+        self.dt = dt  # Time step
+        self.error_sum = 0.0
+        self.last_error = 0.0
+
+    def compute(self, setpoint, measurement):
+        error = setpoint - measurement
+        self.error_sum += error * self.dt
+        error_rate = (error - self.last_error) / self.dt
+
+        output = (self.kp * error +
+                 self.ki * self.error_sum +
+                 self.kd * error_rate)
+
+        self.last_error = error
+        return output
+```
+
+## Model-Based Control Strategies
+
+Using mathematical models for improved control:
+
+- **Inverse dynamics**: Calculating required torques for desired motion
+- **Computed torque control**: Linearizing system dynamics
+- **Operational space control**: Controlling task-space variables directly
+- **Optimal control**: Finding control inputs that minimize cost functions
+
+## Impedance and Admittance Control
+
+Controlling the robot's mechanical interaction properties:
+
+- **Impedance control**: Controlling the robot's response to external forces
+- **Admittance control**: Controlling motion in response to applied forces
+- **Variable impedance**: Adjusting mechanical properties based on task
+- **Stability considerations**: Ensuring stable interaction with environment
+
+## Real-Time Control Architecture
+
+Designing control systems that meet timing constraints:
+
+- **Control loop timing**: Ensuring consistent update rates
+- **Priority scheduling**: Ensuring critical tasks execute on time
+- **Communication protocols**: Low-latency sensor/actuator communication
+- **Middleware frameworks**: ROS/ROS2 for distributed control
+
+## Control Stability and Performance Metrics
+
+Evaluating control system effectiveness:
+
+- **Stability margins**: Gain and phase margins for frequency domain analysis
+- **Tracking performance**: How well the system follows desired trajectories
+- **Robustness**: Performance in the presence of model uncertainties
+- **Energy efficiency**: Power consumption during control
+
+## Hierarchical Control Structures
+
+Organizing control functions at different levels:
+
+- **High-level planning**: Task-level decision making
+- **Mid-level coordination**: Inter-limb coordination and gait generation
+- **Low-level control**: Joint-level servo control
+- **Integration**: Seamless communication between levels
+
+## ROS/ROS2 Control Frameworks
+
+Using ROS/ROS2 for control implementation:
+
+- **ros_control**: Standard control framework for robots
+- **Controller managers**: Managing multiple controllers
+- **Hardware interfaces**: Abstracting hardware differences
+- **Real-time considerations**: Ensuring real-time performance
+
+## Safety in Control Systems
+
+Safety considerations for control architecture:
+
+- **Limit enforcement**: Preventing joint limit violations
+- **Emergency stops**: Rapid shutdown of control systems
+- **Fault detection**: Identifying control system failures
+- **Safe fallbacks**: Maintaining safety when primary control fails
+
+## Chapter Project: Implementing Basic PID Controller
+
+In this project, you'll implement a basic PID controller for joint control in simulation:
+
+1. Set up a simulated joint with position feedback
+2. Implement PID controller with tunable parameters
+3. Test the controller with different setpoints
+4. Tune the controller for optimal performance
+5. Evaluate stability and tracking metrics
+
+## Review Questions
+
+1. What are the components of a PID controller and how do they work?
+2. How does impedance control differ from position control?
+3. What are the advantages of model-based control strategies?
+4. Why is real-time performance critical for humanoid control?
+5. How does ros_control facilitate robot control implementation?
