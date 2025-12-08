@@ -81,7 +81,7 @@ function HomepageHeader() {
           <Link className="button button--primary button--lg" to="/docs/introduction">
             Start Reading
           </Link>
-          <Link className="button button--outline button--lg" to="/docs/introduction">
+          <Link className="button button--outline button--lg" to="/docs">
             View Outline
           </Link>
         </div>
