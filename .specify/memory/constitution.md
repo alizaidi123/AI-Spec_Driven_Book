@@ -38,4 +38,18 @@ All chapters must undergo technical review by subject matter experts in robotics
 ## Governance
 This constitution governs all aspects of the Physical AI & Humanoid Robotics book development. All contributions must comply with these principles. Amendments require documentation of rationale and approval by the editorial board. All pull requests must verify compliance with these principles before merging.
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-08 | **Last Amended**: 2025-12-08
+## Additional Project Rules for AI-Spec_Driven_Book
+
+### I. Spec-Driven Development Process
+No vibe coding: every change must be driven by spec → plan → tasks → implement. All development must follow this strict sequence with formal documentation at each stage.
+
+### II. System Architecture
+Keep frontend static (Docusaurus/Vercel). Backend is a separate FastAPI service. Never expose secrets in frontend. All OpenAI/Qdrant/Neon credentials stay server-side.
+
+### III. RAG System Requirements
+RAG answers must cite sources (chapter filename + section heading if available). Add "Selection-only mode": when user provides selected text, the assistant must answer using only that text; if not answerable, say so.
+
+### IV. Resource Constraints
+Keep everything lightweight for free-tier deployment. No images and no LaTeX/math rendering in chatbot responses.
+
+**Version**: 1.0.0 | **Ratified**: 2025-12-08 | **Last Amended**: 2025-12-16

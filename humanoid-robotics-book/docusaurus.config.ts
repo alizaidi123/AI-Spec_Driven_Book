@@ -29,6 +29,10 @@
       locales: ['en'],
     },
 
+    customFields: {
+      ragApiBaseUrl: process.env.RAG_API_BASE_URL || 'http://localhost:8000'
+    },
+
     presets: [
       [
         'classic',

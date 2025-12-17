@@ -5,7 +5,20 @@
       "Bash(.specify/scripts/powershell/setup-plan.ps1 -Json)",
       "SlashCommand(/sp.tasks)",
       "SlashCommand(/sp.implement)",
-      "Bash(.specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks)"
+      "Bash(.specify/scripts/powershell/check-prerequisites.ps1 -Json -RequireTasks -IncludeTasks)",
+      "Bash(git rev-parse --git-dir)",
+      "Bash(python -c \"from settings import settings; print(''Settings loaded successfully:'', settings.model_dump())\")",
+      "Bash(curl -s http://127.0.0.1:8000/health)",
+      "Bash(python -m uvicorn main:app --host 0.0.0.0 --port 8000 --workers 1)",
+      "Bash(python test_settings_fix.py)",
+      "Bash(python test_health.py)",
+      "Bash(python test_settings_updated.py)",
+      "Bash(python test_implementation.py)",
+      "Bash(python test_health_implementation.py:*)",
+      "Bash(python test_backend_startup.py)",
+      "Bash(timeout 15s python -m uvicorn main:app --host 0.0.0.0 --port 8000 --workers 1)",
+      "Bash(dir rag-backend /s)",
+      "Bash(dir rag-backend/.env)"
     ],
     "deny": [],
     "ask": []
